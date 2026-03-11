@@ -4,9 +4,9 @@ const isGithubActions = process.env.GITHUB_ACTIONS || false;
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: isGithubActions ? "/damanjot-singh.github.io" : "",
+  basePath: isGithubActions ? "/liquid-portfolio" : "",
   env: {
-    NEXT_PUBLIC_BASE_PATH: isGithubActions ? "/damanjot-singh.github.io" : "",
+    NEXT_PUBLIC_BASE_PATH: isGithubActions ? "/liquid-portfolio" : "",
   },
   images: {
     unoptimized: true,
