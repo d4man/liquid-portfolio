@@ -17,7 +17,7 @@ export function Navbar() {
 
     return (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl">
-            <header className="rounded-full border border-white/10 dark:border-neutral-800/40 bg-white/30 dark:bg-black/30 backdrop-blur-2xl shadow-lg shadow-black/5 dark:shadow-black/30">
+            <header className="rounded-full border border-white/10 dark:border-neutral-800/40 bg-white/10 dark:bg-black/10 backdrop-blur-3xl shadow-lg shadow-black/5 dark:shadow-black/30">
                 <div className="flex h-14 items-center justify-between px-5">
                     {/* Logo */}
                     <Link href="/" className="flex items-center space-x-1.5 shrink-0">
@@ -40,8 +40,15 @@ export function Navbar() {
                     </nav>
 
                     {/* Right side */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-3">
                         <ThemeToggle />
+                        <a
+                            href="mailto:damanjs2023@yahoo.com"
+                            className="hidden sm:inline-flex h-8 items-center justify-center rounded-full bg-emerald-500/10 border border-emerald-500/20 px-4 text-xs font-semibold text-emerald-600 dark:text-emerald-400 font-mono transition-all hover:bg-emerald-500/20 hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+                        >
+                            <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-500 mr-2 animate-pulse" />
+                            Hire Me
+                        </a>
                         {/* Mobile hamburger */}
                         <button
                             type="button"

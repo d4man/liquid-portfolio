@@ -44,7 +44,7 @@ const socialCards = [
 export function Footer() {
     return (
         <footer className="bg-white dark:bg-[#0A0A0A] pt-24 pb-12">
-            <div className="container px-4 md:px-6 mx-auto">
+            <div className="max-w-4xl mx-auto px-4 md:px-6">
 
                 {/* Connect Section - Kirti style cards */}
                 <div id="contact" className="mb-20">

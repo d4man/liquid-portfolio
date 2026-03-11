@@ -60,7 +60,7 @@ const projects = [
 export function Projects() {
     return (
         <section id="projects" className="py-24 bg-white dark:bg-black">
-            <div className="container px-4 md:px-6 mx-auto">
+            <div className="max-w-4xl mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-start justify-center space-y-4 mb-12">
                     <div className="inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-600 dark:text-emerald-400 font-mono">
                         {"~/projects_list"}
@@ -79,7 +79,7 @@ export function Projects() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="group relative flex flex-col justify-between rounded-xl border border-white/10 dark:border-neutral-800/60 bg-white/40 dark:bg-black/40 backdrop-blur-md p-6 sm:p-8 hover:border-emerald-500/50 transition-colors h-full overflow-hidden shadow-sm"
+                            className="group relative flex flex-col justify-between rounded-xl border border-white/10 dark:border-neutral-800/60 bg-white/40 dark:bg-black/40 backdrop-blur-md p-6 sm:p-8 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 h-full overflow-hidden"
                         >
                             {/* Background Glow - Liquid Glass */}
                             <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/5 dark:from-emerald-500/10 dark:via-transparent dark:to-transparent opacity-0 transition-opacity group-hover:opacity-100 pointer-events-none" />

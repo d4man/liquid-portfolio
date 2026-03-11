@@ -32,7 +32,7 @@ const skills = [
 export function About() {
     return (
         <section id="about" className="py-24 bg-white dark:bg-[#0A0A0A]">
-            <div className="container px-4 md:px-6 mx-auto">
+            <div className="max-w-4xl mx-auto px-4 md:px-6">
                 <div className="flex flex-col md:flex-row gap-16 items-start">
 
                     {/* About Text */}
@@ -63,7 +63,7 @@ export function About() {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.4, delay: index * 0.1 }}
-                                    className="space-y-3"
+                                    className="p-5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 space-y-4 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300"
                                 >
                                     <h4 className="font-mono text-sm text-emerald-500">{skillGroup.category}</h4>
                                     <div className="flex flex-wrap gap-2">

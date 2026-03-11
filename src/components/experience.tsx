@@ -46,7 +46,7 @@ const experiences = [
 export function Experience() {
     return (
         <section id="experience" className="py-24 bg-neutral-50 dark:bg-[#0A0A0A]">
-            <div className="container px-4 md:px-6 mx-auto">
+            <div className="max-w-4xl mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-start justify-center space-y-4 mb-12">
                     <div className="inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-sm font-medium text-emerald-600 dark:text-emerald-400 font-mono">
                         {"<Experience />"}
@@ -80,7 +80,7 @@ export function Experience() {
                                 </div>
                             </div>
 
-                            <div className="group relative rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black/50 p-6 shadow-sm transition-all hover:shadow-md hover:border-emerald-500/50">
+                            <div className="group relative rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black/50 p-6 shadow-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:border-emerald-500/50">
                                 {/* Subtle glow effect on hover */}
                                 <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
 

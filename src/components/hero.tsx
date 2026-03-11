@@ -11,7 +11,7 @@ export function Hero() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] md:w-[600px] md:h-[600px] bg-emerald-500/20 dark:bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
             <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-cyan-500/20 dark:bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none mix-blend-screen" />
 
-            <div className="z-10 container px-4 md:px-6 flex flex-col items-center text-center space-y-8 relative">
+            <div className="z-10 max-w-4xl mx-auto px-4 md:px-6 flex flex-col items-center text-center space-y-8 relative">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
