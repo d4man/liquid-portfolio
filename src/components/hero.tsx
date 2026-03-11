@@ -57,7 +57,7 @@ export function Hero() {
                         <ArrowRight className="w-4 h-4" />
                     </Link>
                     <Link
-                        href="/daman_resume0326.pdf"
+                        href={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/daman_resume0326.pdf`}
                         target="_blank"
                         className="inline-flex h-12 items-center justify-center rounded-md border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0A0A0A] px-8 text-sm font-medium shadow-sm transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:pointer-events-none disabled:opacity-50 font-mono gap-2"
                     >
