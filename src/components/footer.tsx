@@ -166,7 +166,7 @@ export function Footer() {
                 {/* Minimal Terminal Footer */}
                 <div className="pt-8 border-t border-neutral-200 dark:border-neutral-800 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-xs text-neutral-500">
                     <div>
-                        <span className="text-emerald-500">{">_ "}</span>$ crafted_by damanjot_singh
+                        <span className="text-emerald-500">{">_ "}</span>$ crafted_by damdam
                     </div>
                     <div>{"/* © 2026 deployed_via_github_pages */"}</div>
                 </div>
