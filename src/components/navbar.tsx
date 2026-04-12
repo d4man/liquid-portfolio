@@ -32,19 +32,20 @@ export function Navbar() {
     }, []);
 
     return (
-        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl transition-all duration-300">
-            <header 
-                ref={navRef}
-                className={`relative overflow-hidden border border-white/40 dark:border-white/10 bg-white/40 dark:bg-black/40 backdrop-blur-2xl backdrop-saturate-150 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_8px_32px_0_rgba(0,0,0,0.05)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_32px_0_rgba(0,0,0,0.3)] transition-all duration-300 ${mobileOpen ? "rounded-3xl" : "rounded-full"}`}
-                style={{ filter: "url(#liquid-refraction)" } as React.CSSProperties}
-            >
-                {/* Specular Highlight Overlay */}
-                <div 
-                    className="pointer-events-none absolute inset-0 z-0 opacity-40 transition-opacity duration-500"
-                    style={{
-                        background: `radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.4), transparent 40%)`
-                    }}
-                />
+        <>
+            <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl transition-all duration-300">
+                <header 
+                    ref={navRef}
+                    className={`relative overflow-hidden border border-white/40 dark:border-white/10 bg-white/40 dark:bg-black/40 backdrop-blur-2xl backdrop-saturate-150 shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),0_8px_32px_0_rgba(0,0,0,0.05)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_32px_0_rgba(0,0,0,0.3)] transition-all duration-300 ${mobileOpen ? "rounded-3xl" : "rounded-full"}`}
+                >
+                    {/* Specular Highlight Overlay */}
+                    <div 
+                        className="pointer-events-none absolute inset-0 z-0 opacity-40 transition-opacity duration-500"
+                        style={{
+                            background: `radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.4), transparent 40%)`,
+                            filter: "url(#liquid-refraction)"
+                        }}
+                    />
                 <div className="relative z-10 flex h-14 items-center justify-between px-5">
                     {/* Logo */}
                     <Link href="/" className="flex items-center space-x-1.5 shrink-0">
