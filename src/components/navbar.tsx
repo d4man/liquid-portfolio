@@ -31,17 +31,24 @@ export function Navbar() {
         return () => window.removeEventListener("mousemove", handleMouseMove);
     }, []);
 
+    // Auto-close mobile menu on scroll
+    useEffect(() => {
+        const handleScroll = () => {
+            if (mobileOpen) {
+                setMobileOpen(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [mobileOpen]);
+
     return (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl transition-all duration-300">
             <header 
                 ref={navRef}
-                className={`relative overflow-hidden border border-white/50 dark:border-white/20 bg-white/30 dark:bg-black/30 backdrop-blur-[24px] backdrop-saturate-[1.8] shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(255,255,255,0.1),0_8px_32px_0_rgba(0,0,0,0.15)] dark:shadow-[inset_0_2px_4px_rgba(255,255,255,0.1),inset_0_-1px_1px_rgba(255,255,255,0.05),0_8px_32px_0_rgba(0,0,0,0.5)] transition-all duration-300 rounded-[2rem]`}
+                className={`relative overflow-hidden border border-white/50 dark:border-white/20 bg-white/40 dark:bg-black/40 backdrop-blur-[24px] backdrop-saturate-[1.8] shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(255,255,255,0.1),0_8px_32px_0_rgba(0,0,0,0.15)] dark:shadow-[inset_0_2px_4px_rgba(255,255,255,0.1),inset_0_-1px_1px_rgba(255,255,255,0.05),0_8px_32px_0_rgba(0,0,0,0.5)] transition-all duration-300 rounded-[2rem]`}
             >
-                {/* SVG Liquid Refraction Engine application layer */}
-                <div 
-                    className="pointer-events-none absolute inset-0 z-0 rounded-[2rem] opacity-50"
-                    style={{ backdropFilter: "url(#liquid-refraction-engine)" }}
-                />
 
                 {/* Rim Light / Specular Custom Highlight Overlay */}
                 <div 
@@ -109,27 +116,20 @@ export function Navbar() {
                                     {link.label}
                                 </Link>
                             ))}
+                            
+                            <a
+                                href="mailto:damanjs2023@yahoo.com"
+                                onClick={() => setMobileOpen(false)}
+                                className="mt-2 flex h-[2.5rem] items-center justify-center rounded-[2rem] bg-emerald-500/90 text-white dark:bg-emerald-500/20 border border-emerald-500/40 px-5 text-sm font-bold font-mono transition-all duration-300 active:scale-95 hover:bg-emerald-500 dark:hover:bg-emerald-500/30 isolate"
+                            >
+                                <span className="flex h-1.5 w-1.5 rounded-[2rem] bg-white dark:bg-emerald-400 mr-2 animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+                                <span className="text-white dark:text-emerald-50">Hire Me</span>
+                            </a>
                         </div>
                     </nav>
                 )}
             </header>
 
-            {/* SVG Liquid Glass Refraction Engine */}
-            <svg style={{ position: "absolute", width: 0, height: 0, pointerEvents: "none" }} aria-hidden="true">
-                <defs>
-                    <filter id="liquid-refraction-engine" colorInterpolationFilters="sRGB">
-                        {/* High frequency turbulence to simulate physical glass microscopic imperfections */}
-                        <feTurbulence type="fractalNoise" baseFrequency="0.005" numOctaves="3" result="noise" />
-                        <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.4 0" in="noise" result="coloredNoise" />
-                        
-                        {/* The true displacement that physically refracts pixels behind the glass based on the noise */}
-                        <feDisplacementMap in="SourceGraphic" in2="coloredNoise" scale="35" xChannelSelector="R" yChannelSelector="G" result="displacement" />
-                        
-                        {/* Soft blend to merge the refracted graphics back into standard blurry context smoothly */}
-                        <feBlend mode="normal" in="displacement" in2="SourceGraphic" />
-                    </filter>
-                </defs>
-            </svg>
         </div>
     );
 }

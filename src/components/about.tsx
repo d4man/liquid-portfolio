@@ -69,10 +69,20 @@ export function About() {
                                     whileInView={{ opacity: 1, scale: 1 }}
                                     viewport={{ once: true }}
                                     transition={{ duration: 0.4, delay: index * 0.1 }}
-                                    className="p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 space-y-4 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 flex flex-col h-full"
+                                    className="group relative p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 space-y-4 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 flex flex-col h-full overflow-hidden"
                                 >
-                                    <h4 className="font-mono text-sm font-semibold text-emerald-600 dark:text-emerald-400 tracking-tight">{skillGroup.category}</h4>
-                                    <div className="flex flex-wrap gap-2 mt-auto">
+                                    {/* Lighting Glares */}
+                                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
+
+                                    {/* macOS Header Dots */}
+                                    <div className="flex gap-1.5 mb-1 relative z-10">
+                                        <div className="w-3 h-3 rounded-full bg-red-400 dark:bg-red-500/90 shadow-sm border border-red-500/20"></div>
+                                        <div className="w-3 h-3 rounded-full bg-yellow-400 dark:bg-yellow-500/90 shadow-sm border border-yellow-500/20"></div>
+                                        <div className="w-3 h-3 rounded-full bg-green-400 dark:bg-green-500/90 shadow-sm border border-green-500/20"></div>
+                                    </div>
+
+                                    <h4 className="font-mono text-sm font-semibold text-emerald-600 dark:text-emerald-400 tracking-tight relative z-10">{skillGroup.category}</h4>
+                                    <div className="flex flex-wrap gap-2 mt-auto relative z-10">
                                         {skillGroup.items.map((item) => (
                                             <span
                                                 key={item}

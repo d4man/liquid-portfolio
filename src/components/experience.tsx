@@ -80,18 +80,27 @@ export function Experience() {
                                 </div>
                             </div>
 
-                            <div className="group relative rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black/50 p-6 shadow-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:border-emerald-500/50">
+                            <div className="group relative rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black/50 p-6 shadow-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:border-emerald-500/50 overflow-hidden">
                                 {/* Subtle glow effect on hover */}
-                                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+                                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
 
-                                <ul className="relative space-y-3 z-10 text-neutral-600 dark:text-neutral-300">
-                                    {exp.description.map((item, i) => (
-                                        <li key={i} className="flex gap-3 text-sm md:text-base">
-                                            <span className="text-emerald-500 mt-1 flex-shrink-0">{">"}</span>
-                                            <span>{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+                                <div className="relative z-10">
+                                    {/* macOS Header Dots */}
+                                    <div className="flex gap-1.5 mb-4">
+                                        <div className="w-3 h-3 rounded-full bg-red-400 dark:bg-red-500/90 shadow-sm border border-red-500/20"></div>
+                                        <div className="w-3 h-3 rounded-full bg-yellow-400 dark:bg-yellow-500/90 shadow-sm border border-yellow-500/20"></div>
+                                        <div className="w-3 h-3 rounded-full bg-green-400 dark:bg-green-500/90 shadow-sm border border-green-500/20"></div>
+                                    </div>
+
+                                    <ul className="space-y-3 text-neutral-600 dark:text-neutral-300">
+                                        {exp.description.map((item, i) => (
+                                            <li key={i} className="flex gap-3 text-sm md:text-base">
+                                                <span className="text-emerald-500 mt-1 flex-shrink-0">{">"}</span>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         </motion.div>
                     ))}

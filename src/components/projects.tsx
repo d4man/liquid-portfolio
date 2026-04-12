@@ -82,9 +82,16 @@ export function Projects() {
                             className="group relative flex flex-col justify-between rounded-xl border border-white/10 dark:border-neutral-800/60 bg-white/40 dark:bg-black/40 backdrop-blur-md p-6 sm:p-8 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 h-full overflow-hidden"
                         >
                             {/* Background Glow - Liquid Glass */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/5 dark:from-emerald-500/10 dark:via-transparent dark:to-transparent opacity-0 transition-opacity group-hover:opacity-100 pointer-events-none" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/5 dark:from-emerald-500/10 dark:via-transparent dark:to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
 
-                            <div>
+                            <div className="relative z-10">
+                                {/* macOS Header Dots */}
+                                <div className="flex gap-1.5 mb-4">
+                                    <div className="w-3 h-3 rounded-full bg-red-400 dark:bg-red-500/90 shadow-sm border border-red-500/20"></div>
+                                    <div className="w-3 h-3 rounded-full bg-yellow-400 dark:bg-yellow-500/90 shadow-sm border border-yellow-500/20"></div>
+                                    <div className="w-3 h-3 rounded-full bg-green-400 dark:bg-green-500/90 shadow-sm border border-green-500/20"></div>
+                                </div>
+
                                 <div className="flex justify-between items-start mb-4">
                                     <div>
                                         <div className="text-sm font-mono text-emerald-500 mb-2">{project.type} &middot; {project.date}</div>
