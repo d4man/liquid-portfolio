@@ -42,7 +42,8 @@ export function Navbar() {
                     <div 
                         className="pointer-events-none absolute inset-0 z-0 opacity-40 transition-opacity duration-500"
                         style={{
-                            background: `radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.4), transparent 40%)`
+                            background: `radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.4), transparent 40%)`,
+                            filter: "url(#liquid-refraction)"
                         }}
                     />
                 <div className="relative z-10 flex h-14 items-center justify-between px-5">
@@ -109,7 +110,16 @@ export function Navbar() {
             </header>
         </div>
 
-            {/* Liquid SVG filter removed for cross browser compatibility */}
+            {/* The Liquid Glass Engine (SVG Filter) */}
+            <svg style={{ position: "absolute", width: 0, height: 0, pointerEvents: "none" }} aria-hidden="true">
+                <defs>
+                    <filter id="liquid-refraction">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="liquid" />
+                        <feComposite in="SourceGraphic" in2="liquid" operator="atop" />
+                    </filter>
+                </defs>
+            </svg>
         </>
     );
 }
