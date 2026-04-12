@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -12,52 +12,102 @@ const navLinks = [
     { href: "#contact", label: "./contact" },
 ];
 
+/* ── Inline SVG micro-noise texture (monochromatic) ─────────────────────── */
+const NOISE_SVG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")`;
+
 export function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
-    const navRef = useRef<HTMLDivElement>(null);
+    const navRef = useRef<HTMLElement>(null);
 
-    // Mouse tracking for Custom Specular Highlights
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            if (!navRef.current) return;
-            const { left, top, width, height } = navRef.current.getBoundingClientRect();
-            const x = ((e.clientX - left) / width) * 100;
-            const y = ((e.clientY - top) / height) * 100;
-            navRef.current.style.setProperty("--mouse-x", `${x}%`);
-            navRef.current.style.setProperty("--mouse-y", `${y}%`);
-        };
-
-        window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
+    /* ── Specular highlight: mouse tracking (desktop) ─────────────────── */
+    const handleMouseMove = useCallback((e: MouseEvent) => {
+        if (!navRef.current) return;
+        const { left, top, width, height } = navRef.current.getBoundingClientRect();
+        const x = ((e.clientX - left) / width) * 100;
+        const y = ((e.clientY - top) / height) * 100;
+        navRef.current.style.setProperty("--mouse-x", `${x}%`);
+        navRef.current.style.setProperty("--mouse-y", `${y}%`);
     }, []);
 
-    // Auto-close mobile menu on scroll
     useEffect(() => {
-        const handleScroll = () => {
-            if (mobileOpen) {
-                setMobileOpen(false);
-            }
+        window.addEventListener("mousemove", handleMouseMove, { passive: true });
+        return () => window.removeEventListener("mousemove", handleMouseMove);
+    }, [handleMouseMove]);
+
+    /* ── Touch highlight: touch tracking (mobile) ─────────────────────── */
+    useEffect(() => {
+        const el = navRef.current;
+        if (!el) return;
+
+        const handleTouch = (e: TouchEvent) => {
+            const touch = e.touches[0];
+            if (!touch) return;
+            const { left, top, width, height } = el.getBoundingClientRect();
+            const x = ((touch.clientX - left) / width) * 100;
+            const y = ((touch.clientY - top) / height) * 100;
+            el.style.setProperty("--mouse-x", `${x}%`);
+            el.style.setProperty("--mouse-y", `${y}%`);
         };
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
+        el.addEventListener("touchmove", handleTouch, { passive: true });
+        el.addEventListener("touchstart", handleTouch, { passive: true });
+        return () => {
+            el.removeEventListener("touchmove", handleTouch);
+            el.removeEventListener("touchstart", handleTouch);
+        };
+    }, []);
+
+    /* ── Auto-close mobile menu on scroll ──────────────────────────────── */
+    useEffect(() => {
+        if (!mobileOpen) return;
+        const close = () => setMobileOpen(false);
+        window.addEventListener("scroll", close, { passive: true });
+        return () => window.removeEventListener("scroll", close);
     }, [mobileOpen]);
 
     return (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-4xl transition-all duration-300">
-            <header 
+            <header
                 ref={navRef}
-                className={`relative overflow-hidden border border-white/50 dark:border-white/20 bg-white/40 dark:bg-black/40 backdrop-blur-[24px] backdrop-saturate-[1.8] shadow-[inset_0_2px_4px_rgba(255,255,255,0.4),inset_0_-1px_1px_rgba(255,255,255,0.1),0_8px_32px_0_rgba(0,0,0,0.15)] dark:shadow-[inset_0_2px_4px_rgba(255,255,255,0.1),inset_0_-1px_1px_rgba(255,255,255,0.05),0_8px_32px_0_rgba(0,0,0,0.5)] transition-all duration-300 rounded-[2rem]`}
+                style={{
+                    /* GPU compositor hints */
+                    willChange: "backdrop-filter, transform",
+                    contain: "layout style paint",
+                }}
+                className="liquid-glass-nav relative overflow-hidden rounded-[2rem] transition-all duration-300"
             >
-
-                {/* Rim Light / Specular Custom Highlight Overlay */}
-                <div 
-                    className="pointer-events-none absolute inset-0 z-0 opacity-70 transition-opacity duration-300 mix-blend-overlay dark:mix-blend-screen"
+                {/* ── Layer 1: Micro Noise Texture ──────────────────────── */}
+                <div
+                    className="pointer-events-none absolute inset-0 z-0 rounded-[2rem] mix-blend-overlay"
                     style={{
-                        background: `radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.6), transparent 40%)`
+                        backgroundImage: NOISE_SVG,
+                        backgroundRepeat: "repeat",
+                        backgroundSize: "128px 128px",
+                        opacity: 0.5,
                     }}
                 />
-                
+
+                {/* ── Layer 2: Specular Highlight (follows pointer) ─────── */}
+                <div
+                    className="pointer-events-none absolute inset-0 z-0 rounded-[2rem] opacity-60 transition-opacity duration-200 mix-blend-overlay dark:mix-blend-screen"
+                    style={{
+                        background: `radial-gradient(400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.55), transparent 50%)`,
+                    }}
+                />
+
+                {/* ── Layer 3: Chromatic Edge Refraction  ───────────────── */}
+                <div
+                    className="pointer-events-none absolute inset-0 z-0 rounded-[2rem]"
+                    style={{
+                        border: "1px solid transparent",
+                        borderImage: "linear-gradient(135deg, rgba(255,255,255,0.5), rgba(16,185,129,0.15), rgba(255,255,255,0.3), rgba(6,182,212,0.1), rgba(255,255,255,0.5)) 1",
+                        WebkitMask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
+                        WebkitMaskComposite: "xor",
+                        maskComposite: "exclude",
+                    }}
+                />
+
+                {/* ── Content ──────────────────────────────────────────── */}
                 <div className="relative z-10 flex h-[3.8rem] items-center justify-between px-6">
                     {/* Logo */}
                     <Link href="/" className="flex items-center space-x-1.5 shrink-0 group">
@@ -111,7 +161,7 @@ export function Navbar() {
                                     key={link.href}
                                     href={link.href}
                                     onClick={() => setMobileOpen(false)}
-                                    className="px-5 py-3 text-sm font-semibold font-mono text-neutral-800 dark:text-white bg-white/20 dark:bg-white/5 border border-white/30 dark:border-white/5 rounded-[2rem] transition-all duration-300 active:scale-[0.98] hover:bg-white/40 dark:hover:bg-white/10 hover:shadow-sm"
+                                    className="px-5 py-3 text-sm font-semibold font-mono text-neutral-800 dark:text-white bg-white/20 dark:bg-white/5 border border-white/30 dark:border-white/5 rounded-[2rem] transition-all duration-300 active:scale-[0.98] active:bg-white/40 dark:active:bg-white/10 hover:bg-white/40 dark:hover:bg-white/10 hover:shadow-sm"
                                 >
                                     {link.label}
                                 </Link>
@@ -129,7 +179,6 @@ export function Navbar() {
                     </nav>
                 )}
             </header>
-
         </div>
     );
 }
