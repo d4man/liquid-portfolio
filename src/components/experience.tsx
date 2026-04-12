@@ -82,7 +82,7 @@ export function Experience() {
 
                             <div className="group relative rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black/50 p-6 shadow-sm transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] hover:border-emerald-500/50 overflow-hidden">
                                 {/* Subtle glow effect on hover */}
-                                <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
+                                <div className="glow-overlay absolute inset-0 rounded-xl bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
 
                                 <div className="relative z-10">
                                     {/* macOS Header Dots */}

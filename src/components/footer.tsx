@@ -68,7 +68,7 @@ export function Footer() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                                className="group relative flex flex-col gap-3 p-5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 hover:bg-emerald-500/10 dark:hover:bg-emerald-500/10 hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] transition-all duration-300"
+                                className="group relative flex flex-col gap-3 p-5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 hover:bg-emerald-500/10 dark:hover:bg-emerald-500/10 hover:border-emerald-500/50 hover:shadow-[0_0_15px_rgba(16,185,129,0.2)] active:bg-emerald-500/10 active:border-emerald-500/50 active:shadow-[0_0_15px_rgba(16,185,129,0.2)] transition-all duration-300"
                             >
                                 <div className="flex items-center justify-between">
                                     <card.icon className="w-5 h-5 text-neutral-400 group-hover:text-emerald-500 transition-colors" />
@@ -92,22 +92,34 @@ export function Footer() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 p-6 space-y-5"
+                        className="group relative rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 p-6 space-y-5 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 overflow-hidden"
                     >
-                        <div className="flex items-center gap-2">
-                            <GraduationCap className="w-5 h-5 text-emerald-500" />
-                            <h3 className="text-lg font-bold tracking-tight">Education</h3>
-                        </div>
-                        <div className="space-y-4">
-                            <div className="border-l-2 border-emerald-500/30 pl-4">
-                                <h4 className="font-semibold text-sm">M.Tech, Computer Science</h4>
-                                <p className="text-xs font-mono text-emerald-500 mt-0.5">NIT Jalandhar &middot; 2023–2025</p>
-                                <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">CGPA: 7.24 | Thesis: XAI Multimodal Emotion Recognition</p>
+                        {/* Glow Overlay */}
+                        <div className="glow-overlay absolute inset-0 rounded-xl bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
+
+                        <div className="relative z-10">
+                            {/* macOS Header Dots */}
+                            <div className="flex gap-1.5 mb-4">
+                                <div className="w-3 h-3 rounded-full bg-red-400 dark:bg-red-500/90 shadow-sm border border-red-500/20"></div>
+                                <div className="w-3 h-3 rounded-full bg-yellow-400 dark:bg-yellow-500/90 shadow-sm border border-yellow-500/20"></div>
+                                <div className="w-3 h-3 rounded-full bg-green-400 dark:bg-green-500/90 shadow-sm border border-green-500/20"></div>
                             </div>
-                            <div className="border-l-2 border-emerald-500/30 pl-4">
-                                <h4 className="font-semibold text-sm">B.Tech, Computer Science</h4>
-                                <p className="text-xs font-mono text-emerald-500 mt-0.5">IKG PTU Jalandhar &middot; 2019–2023</p>
-                                <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">CGPA: 8.08</p>
+
+                            <div className="flex items-center gap-2 mb-4">
+                                <GraduationCap className="w-5 h-5 text-emerald-500" />
+                                <h3 className="text-lg font-bold tracking-tight">Education</h3>
+                            </div>
+                            <div className="space-y-4">
+                                <div className="border-l-2 border-emerald-500/30 pl-4 hover:border-emerald-500 transition-colors duration-300">
+                                    <h4 className="font-semibold text-sm">M.Tech, Computer Science</h4>
+                                    <p className="text-xs font-mono text-emerald-500 mt-0.5">NIT Jalandhar &middot; 2023–2025</p>
+                                    <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">CGPA: 7.24 | Thesis: XAI Multimodal Emotion Recognition</p>
+                                </div>
+                                <div className="border-l-2 border-emerald-500/30 pl-4 hover:border-emerald-500 transition-colors duration-300">
+                                    <h4 className="font-semibold text-sm">B.Tech, Computer Science</h4>
+                                    <p className="text-xs font-mono text-emerald-500 mt-0.5">IKG PTU Jalandhar &middot; 2019–2023</p>
+                                    <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">CGPA: 8.08</p>
+                                </div>
                             </div>
                         </div>
                     </motion.div>
@@ -118,46 +130,58 @@ export function Footer() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.1 }}
-                        className="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 p-6 space-y-5"
+                        className="group relative rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 p-6 space-y-5 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 overflow-hidden"
                     >
-                        <div className="flex items-center gap-2">
-                            <BookOpen className="w-5 h-5 text-emerald-500" />
-                            <h3 className="text-lg font-bold tracking-tight">Publications</h3>
-                        </div>
-                        <ul className="space-y-4">
-                            <li className="flex gap-3 text-sm group">
-                                <span className="text-emerald-500 shrink-0 mt-0.5">📄</span>
-                                <div>
-                                    <a href="https://link.springer.com/chapter/10.1007/978-981-96-8197-6_9" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-neutral-900 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium">
-                                        Ubiquity of LLM Hallucinations across Critical Domains
-                                        <ExternalLink className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                                    </a>
-                                    <p className="text-xs font-mono text-neutral-500 mt-0.5">PAKDD 2025 &middot; Springer Nature</p>
-                                </div>
-                            </li>
-                            <li className="flex gap-3 text-sm group">
-                                <span className="text-emerald-500 shrink-0 mt-0.5">📄</span>
-                                <div>
-                                    <a href="https://doi.org/10.1007/978-981-97-8460-8_7" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-neutral-900 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium">
-                                        Generative AI for Cyberdefense
-                                        <ExternalLink className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                                    </a>
-                                    <p className="text-xs font-mono text-neutral-500 mt-0.5">Dec 2024 &middot; Springer Nature</p>
-                                </div>
-                            </li>
-                        </ul>
+                        {/* Glow Overlay */}
+                        <div className="glow-overlay absolute inset-0 rounded-xl bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
 
-                        <div className="pt-3 border-t border-neutral-200 dark:border-neutral-800">
-                            <div className="flex items-center gap-2 mb-2">
-                                <Award className="w-4 h-4 text-emerald-500" />
-                                <h4 className="font-semibold text-sm">Certifications</h4>
+                        <div className="relative z-10">
+                            {/* macOS Header Dots */}
+                            <div className="flex gap-1.5 mb-4">
+                                <div className="w-3 h-3 rounded-full bg-red-400 dark:bg-red-500/90 shadow-sm border border-red-500/20"></div>
+                                <div className="w-3 h-3 rounded-full bg-yellow-400 dark:bg-yellow-500/90 shadow-sm border border-yellow-500/20"></div>
+                                <div className="w-3 h-3 rounded-full bg-green-400 dark:bg-green-500/90 shadow-sm border border-green-500/20"></div>
                             </div>
-                            <div className="flex flex-wrap gap-2">
-                                {["RASA Developer", "Dataiku ML", "NPTEL ML (IIT Madras)"].map((cert) => (
-                                    <span key={cert} className="px-2 py-0.5 bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded text-xs font-mono text-neutral-600 dark:text-neutral-300">
-                                        {cert}
-                                    </span>
-                                ))}
+
+                            <div className="flex items-center gap-2 mb-4">
+                                <BookOpen className="w-5 h-5 text-emerald-500" />
+                                <h3 className="text-lg font-bold tracking-tight">Publications</h3>
+                            </div>
+                            <ul className="space-y-4">
+                                <li className="flex gap-3 text-sm group/pub">
+                                    <span className="text-emerald-500 shrink-0 mt-0.5">📄</span>
+                                    <div>
+                                        <a href="https://link.springer.com/chapter/10.1007/978-981-96-8197-6_9" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-neutral-900 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 active:text-emerald-600 dark:active:text-emerald-400 transition-colors font-medium">
+                                            Ubiquity of LLM Hallucinations across Critical Domains
+                                            <ExternalLink className="w-3 h-3 opacity-0 -translate-x-2 group-hover/pub:opacity-100 group-hover/pub:translate-x-0 transition-all" />
+                                        </a>
+                                        <p className="text-xs font-mono text-neutral-500 mt-0.5">PAKDD 2025 &middot; Springer Nature</p>
+                                    </div>
+                                </li>
+                                <li className="flex gap-3 text-sm group/pub">
+                                    <span className="text-emerald-500 shrink-0 mt-0.5">📄</span>
+                                    <div>
+                                        <a href="https://doi.org/10.1007/978-981-97-8460-8_7" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-neutral-900 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 active:text-emerald-600 dark:active:text-emerald-400 transition-colors font-medium">
+                                            Generative AI for Cyberdefense
+                                            <ExternalLink className="w-3 h-3 opacity-0 -translate-x-2 group-hover/pub:opacity-100 group-hover/pub:translate-x-0 transition-all" />
+                                        </a>
+                                        <p className="text-xs font-mono text-neutral-500 mt-0.5">Dec 2024 &middot; Springer Nature</p>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div className="pt-3 border-t border-neutral-200 dark:border-neutral-800">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <Award className="w-4 h-4 text-emerald-500" />
+                                    <h4 className="font-semibold text-sm">Certifications</h4>
+                                </div>
+                                <div className="flex flex-wrap gap-2">
+                                    {["RASA Developer", "Dataiku ML", "NPTEL ML (IIT Madras)"].map((cert) => (
+                                        <span key={cert} className="px-2 py-0.5 bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded text-xs font-mono text-neutral-600 dark:text-neutral-300 hover:border-emerald-500/50 hover:text-emerald-500 active:border-emerald-500/50 active:text-emerald-500 transition-all duration-300 cursor-default">
+                                            {cert}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </motion.div>

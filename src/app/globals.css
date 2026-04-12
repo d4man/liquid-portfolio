@@ -24,3 +24,26 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ========================================
+   Mobile Touch Interactivity
+   On devices with no hover (phones/tablets),
+   activate glow effects on tap (:active).
+   ======================================== */
+@media (hover: none) {
+  /* Card border + shadow glow on tap */
+  .group:active {
+    border-color: rgba(16, 185, 129, 0.5) !important;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.15) !important;
+  }
+
+  /* Inner gradient overlay on tap */
+  .group:active > .glow-overlay {
+    opacity: 1 !important;
+  }
+
+  /* Social / connect cards */
+  .group:active {
+    background-color: rgba(16, 185, 129, 0.1);
+  }
+}

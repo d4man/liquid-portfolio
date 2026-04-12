@@ -72,7 +72,7 @@ export function About() {
                                     className="group relative p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 space-y-4 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 flex flex-col h-full overflow-hidden"
                                 >
                                     {/* Lighting Glares */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
+                                    <div className="glow-overlay absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
 
                                     {/* macOS Header Dots */}
                                     <div className="flex gap-1.5 mb-1 relative z-10">

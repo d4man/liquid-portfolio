@@ -82,7 +82,7 @@ export function Projects() {
                             className="group relative flex flex-col justify-between rounded-xl border border-white/10 dark:border-neutral-800/60 bg-white/40 dark:bg-black/40 backdrop-blur-md p-6 sm:p-8 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 h-full overflow-hidden"
                         >
                             {/* Background Glow - Liquid Glass */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/5 dark:from-emerald-500/10 dark:via-transparent dark:to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
+                            <div className="glow-overlay absolute inset-0 bg-gradient-to-br from-white/40 to-white/5 dark:from-emerald-500/10 dark:via-transparent dark:to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
 
                             <div className="relative z-10">
                                 {/* macOS Header Dots */}
