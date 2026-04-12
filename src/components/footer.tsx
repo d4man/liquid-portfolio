@@ -128,7 +128,7 @@ export function Footer() {
                             <li className="flex gap-3 text-sm group">
                                 <span className="text-emerald-500 shrink-0 mt-0.5">📄</span>
                                 <div>
-                                    <a href="https://link.springer.com/chapter/10.1007/978-981-99-8260-8_29" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-neutral-900 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium">
+                                    <a href="https://link.springer.com/chapter/10.1007/978-981-96-8197-6_9" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-neutral-900 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium">
                                         Ubiquity of LLM Hallucinations across Critical Domains
                                         <ExternalLink className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                                     </a>
@@ -138,7 +138,7 @@ export function Footer() {
                             <li className="flex gap-3 text-sm group">
                                 <span className="text-emerald-500 shrink-0 mt-0.5">📄</span>
                                 <div>
-                                    <a href="https://dl.acm.org/doi/10.1007/978-981-99-8260-8" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-neutral-900 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium">
+                                    <a href="https://doi.org/10.1007/978-981-97-8460-8_7" target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-neutral-900 dark:text-neutral-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium">
                                         Generative AI for Cyberdefense
                                         <ExternalLink className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                                     </a>
@@ -168,7 +168,7 @@ export function Footer() {
                     <div>
                         <span className="text-emerald-500">{">_ "}</span>$ crafted_by damdam
                     </div>
-                    <div>{"/* © 2026 deployed_via_github_pages */"}</div>
+                    <div>{"/* © 2026 */"}</div>
                 </div>
             </div>
         </footer>
